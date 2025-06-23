@@ -1,7 +1,7 @@
 using Gradus
 using SpectralFitting
 
-struct GradusModel{T,D} <: AbstractTableModel{T,K}
+struct GradusModel{T,D} <: AbstractTableModel{T,Additive}
     table::D # to keep the emissivity function in
     K::T
     "Spin"
@@ -34,14 +34,14 @@ function SpectralFitting.invoke!(output, domain, model::GradusModel)
     d = ThinDisc(0.0, Inf)
     x = SVector{4}(0.0, 10_000.0, deg2rad(model.θ_obs), 0.0)
     m = KerrMetric(1.0, model.a)
-    flux = lineprofile(
+    _, flux = lineprofile(
         domain ./ model.lineE,
         model.table.emissivity,
         m,
         x,
         d;
         maxrₑ = model.outer_r,
-        minrₑ = model.inner_r,
+        minrₑ = max(model.inner_r, Gradus.isco(m)),
         verbose = true,
     )
     output .= flux[1:(end-1)]
@@ -49,6 +49,12 @@ end
 
 # use like:
 
-# model = LampPostModel(h = 10.0)
-# profile = emissivity_profile(m, d, model)
-# GradusModel(r -> emissivity_at(profile, r))
+m = KerrMetric(1.0, 0.998)
+d = ThinDisc(0.0, Inf)
+lp_model = LampPostModel(h = 10.0)
+profile = emissivity_profile(m, d, lp_model)
+model = GradusModel(r -> emissivity_at(profile, r))
+# model = GradusModel(r -> r^-3)
+domain = collect(range(1.0, 10.0, 150))
+m = invokemodel(domain, model)
+plot(domain[1:end-1], m)
