@@ -12,3 +12,7 @@ Investigating degeneracies with more realistic disc models.
 
 - Allow the spacetime to vary, e.g., non-Kerr models
 - Convolve iron line with full reflection spectrum
+
+## Data
+
+The table data for the emissivity table can be downloaded from [here](https://www.star.bristol.ac.uk/fergus/vasto/output-2025-06-23.tar.gz). This will be updated automatically when the tables change.
