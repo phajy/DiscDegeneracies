@@ -29,8 +29,8 @@
   #h(1fr)
   #box(inset: (top: 1.5cm), image("./logos/UoB_CMYK_24.svg", height: 10cm), height: 7cm)
 
-  #text(size: 40pt)[*Andrew Young*, Fergus Baker, Darius Michienzi]
-  #v(1cm)
+  #text(size: 40pt)[*Andy Young*, Fergus Baker, Darius Michienzi] \
+  #text(size: 24pt)[HH Wills Physics Laboratory, Tyndall Avenue, Bristol BS8 1TL, UK]
 ]
 
 // abstract
@@ -46,9 +46,11 @@
 
   X-ray observations of "broad iron lines" are an extremely powerful probe of the spacetime, corona, and accretion environment around black holes.
 
+  A hot corona produces X-rays by inverse-Compton scattering thermal photons from the accretion disc. These X-rays reach the observer directly as well as illuminating the accretion disc. The back-scattered spectrum from the disc contains a strong iron K$alpha$ line that is broadened and skewed by the relativistic effects. The precise geometry of the disc and corona is uncertain.
+
   #figure(
-    block(image("figs/disc_and_reflection.jpg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: ["Lamppost" corona illuminating a razor-thin accretion disc.],
+    block(image("figs/disc_and_reflection.jpg", width: 50%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
+    caption: ["Lamppost" corona illuminating a razor-thin accretion disc.]
   )
 
   #figure(
@@ -66,7 +68,7 @@
 #let poster_models = secblock(fill: COLOR_GREEN)[
   = Models
 
-  We make use of the new general relativistic ray tracer #smallcaps[Gradus.jl] (Baker & Young 2025) which is able to model more realistic scenarios, specifically with arbitrary spacetimes, disc, and corona geometries. In this poster we restrict ourselves to an initial study of thick discs self-consistently illuminated by a lamppost corona (see, e.g., Taylor & Reynolds 2018).
+  We use of a new general relativistic ray tracer #smallcaps[Gradus.jl] (Baker & Young 2025) to model more realistic scenarios, with arbitrary spacetimes, disc, and corona geometries. Here we restrict ourselves to a study of thick discs self-consistently illuminated by a lamppost (see, e.g., Taylor & Reynolds 2018).
 
   #figure(
     block(image("figs/disc_profile_a_0.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
@@ -96,27 +98,27 @@
 #let poster_results = secblock(fill: COLOR_PURPLE)[
   = Preliminary Results and Conclusions
 
-  // Show some preliminary results with model degeneracy.
-
   // figures showing input and recovered spins
   #grid(
     columns: (1fr, 1fr),
     figure(
-      block(image("figs/confidence_thin.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
+      block(image("figs/thin_disc_confidence.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
       caption: [Thin disc simulation / thin disc fit -- good spin measurements.],
     ),
-    [Thick disc plot]
+    figure(
+      block(image("figs/thick_disc_confidence.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
+      caption: [Thick disc simulation / thin disc fit -- biased spin measurements.],
+    )
   )
 
-  More realistic disc models are needed to interpret sepctra.
-  // and timing and polarisation
+  Obscuration of the inner disc can bias spin measurements to lower values. This illustrates the need for new disc models to quantify fit uncertainties.
 ]
 
 // acknowledgements
 #let poster_acknowledgements = secblock(fill: COLOR_GREEN)[
   = Acknowledgements
 
-  This work was supported by the Science and Technology Facilities Council grant number ST/Y001990/1. This is a work in progress and warmly welcome discussion with conference attendees!
+  This work was supported by the Science and Technology Facilities Council grant number ST/Y001990/1. We warmly welcome discussion with conference attendees and/or email #link("mailto:Andy.Young@bristol.ac.uk").
 ]
 
 // references
@@ -125,18 +127,24 @@
 
   - Baker & Young (2025) MNRAS, in review
   - Taylor & Reynolds (2018) ApJ 855 120
-  - Search of #smallcaps[SpectralFitting.jl] and #smallcaps[Gradus.jl] on GitHub
+  \
+
+  #place(top + right, dx: -100pt, dy: 0pt, image("logos/gradus.png", width: 7%))
+  #place(top + right, dx: -10pt, dy: 0pt, image("logos/gradus-qr-code.svg", width: 7%))
+  #place(top + right, dx: -90pt, dy: 100pt, image("logos/spectral_fitting.svg", width: 12%))
+  #place(top + right, dx: -10pt, dy: 100pt, image("logos/spectral-fitting-qr-code.svg", width: 7%))
 ]
 
-#let title_space = 10cm
+#let title_space = 11cm
 #let abstract_space = 12cm
-#let first_block_space = 46cm
+#let first_block_space = 44cm
 #let second_block_space = 11.0cm
-#let third_block_space = 20cm
+#let third_block_space = 22cm
+#let final_block_space = 8cm
 
 #grid(
   columns: (1fr, 1fr),
-  rows: (title_space, abstract_space, first_block_space, second_block_space, third_block_space, 1fr),
+  rows: (title_space, abstract_space, first_block_space, second_block_space, third_block_space, final_block_space),
   column-gutter: SPACING,
   row-gutter: SPACING,
   grid.cell(x: 0, y: 0, colspan: 2, [#poster_title]),
