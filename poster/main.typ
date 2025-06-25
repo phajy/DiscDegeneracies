@@ -1,4 +1,4 @@
-#set page("a0", margin: (2.0cm), fill: orange.lighten(90%))
+#set page("a0", margin: 2.0cm, fill: orange.lighten(90%))
 #set text(size: 34pt)
 
 #let STROKE_WIDTH = 6pt
@@ -37,28 +37,28 @@
 #let poster_abstract = secblock()[
   = Abstract
 
-  X-ray studies of broad iron lines are a key diagnostic of the accretion environment of supermassive black holes. These lines are broadened and skewed in a characteristic manner by the relativistic effects of the disc and black hole. A typical assumption is that the spacetime is described by the Kerr metric for a spinning black hole, the disc is razor thin and in the equatorial plane, and that the corona is a "lamppost" positioned along the symmetry axis. Here we relax these assumptions and investigate potential degeneracies in recovering parameter values when fitting Kerr lamppost models to more sophisticated simulated accretion flows. In particular, we investigate thick discs at high inclination in which the innermost radii can be obscured. This is a _work in progress_ but we show some preliminary results and invite discussion.
+  X-ray studies of broad iron lines are a key diagnostic of the accretion environment of supermassive black holes. These lines are broadened and skewed in a characteristic manner by the relativistic effects of the disc and black hole. A typical assumption is that the spacetime is described by the Kerr metric for a spinning black hole, the disc is razor thin and in the equatorial plane, and that the corona is a "lamppost" positioned along the symmetry axis. Here we relax these assumptions and investigate potential degeneracies in recovering parameter values when fitting Kerr lamppost models to more sophisticated simulated accretion flows. In particular, we investigate thick discs at high inclination in which the innermost radii can be obscured. This is a _work in progress_ but we show some preliminary results and invite discussion about the implications of more realistic disc and corona modelling.
 ]
 
 // introduction
 #let poster_intro = secblock(fill: COLOR_BLUE)[
   = Introduction
 
-  X-ray observations of "broad iron lines" are an extremely powerful probe of the spacetime, corona, and accretion environment around black holes. 
+  X-ray observations of "broad iron lines" are an extremely powerful probe of the spacetime, corona, and accretion environment around black holes.
 
   #figure(
-    block(image("figs/disc_and_reflection.jpg", width: 80%), stroke:6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: ["Lamppost" corona illuminating a razor-thin accretion disc.]
+    block(image("figs/disc_and_reflection.jpg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
+    caption: ["Lamppost" corona illuminating a razor-thin accretion disc.],
   )
 
   #figure(
-    block(image("figs/blurred_reflection.svg", width: 80%), stroke:6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: [The reflection spectrum is relativistically blurred. The specifics of the broadening encode information about the disc, corona, and spacetime.]
+    block(image("figs/blurred_reflection.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
+    caption: [The reflection spectrum is relativistically blurred. The specifics of the broadening encode information about the disc, corona, and spacetime.],
   )
 
   #figure(
-    block(image("figs/powerlaw_fit.svg", width: 80%), stroke:6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: [Power-law fit to MCG --6-30-15 observations by _XMM-Newton_ and _NuSTAR_. The residuals clearly show the broad iron line and Compton hump.]
+    block(image("figs/powerlaw_fit.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
+    caption: [Power-law fit to MCG --6-30-15 observations by _XMM-Newton_ and _NuSTAR_. The residuals clearly show the broad iron line and Compton hump.],
   )
 ]
 
@@ -69,13 +69,13 @@
   We make use of the new general relativistic ray tracer #smallcaps[Gradus.jl] (Baker & Young 2025) which is able to model more realistic scenarios, specifically with arbitrary spacetimes, disc, and corona geometries. In this poster we restrict ourselves to an initial study of thick discs self-consistently illuminated by a lamppost corona (see, e.g., Taylor & Reynolds 2018).
 
   #figure(
-    block(image("figs/disc_profile_a_0.svg", width: 80%), stroke:6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: [Disc cross sections for a range of Eddington fractions, $dot(m)$, illuminated by a lamppost corona.]
+    block(image("figs/disc_profile_a_0.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
+    caption: [Disc cross sections for a range of Eddington fractions, $dot(m)$, illuminated by a lamppost corona (indicated by the red star).],
   )
 
   #figure(
-    block(image("figs/disc_obscuration.svg", width: 80%), stroke:6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: [Razor-thin disc (a) and thick disc (b). Note the obscured innermost radii in (b) -- this will be more significant at high inclination.]
+    block(image("figs/disc_obscuration.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
+    caption: [Razor-thin disc (a) and thick disc (b). Note the obscured innermost radii in (b) -- this will be more significant at high inclination.],
   )
 
   #place(top + right, dx: 60pt, dy: -110pt, image("logos/gradus.png", width: 15%))
@@ -94,15 +94,22 @@
 
 // preliminary results
 #let poster_results = secblock(fill: COLOR_PURPLE)[
-  = Preliminary Results
+  = Preliminary Results and Conclusions
 
-  Show some preliminary results with model degeneracy.
+  // Show some preliminary results with model degeneracy.
 
-  // figure showing input and recovered spins
-#figure(
-    block(image("figs/confidence_thin.svg", width: 40%), stroke:6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: [Thin disc recovered spin parameters.]
+  // figures showing input and recovered spins
+  #grid(
+    columns: (1fr, 1fr),
+    figure(
+      block(image("figs/confidence_thin.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
+      caption: [Thin disc simulation / thin disc fit -- good spin measurements.],
+    ),
+    [Thick disc plot]
   )
+
+  More realistic disc models are needed to interpret sepctra.
+  // and timing and polarisation
 ]
 
 // acknowledgements
@@ -118,12 +125,13 @@
 
   - Baker & Young (2025) MNRAS, in review
   - Taylor & Reynolds (2018) ApJ 855 120
+  - Search of #smallcaps[SpectralFitting.jl] and #smallcaps[Gradus.jl] on GitHub
 ]
 
 #let title_space = 10cm
 #let abstract_space = 12cm
 #let first_block_space = 46cm
-#let second_block_space = 11.8cm
+#let second_block_space = 11.0cm
 #let third_block_space = 20cm
 
 #grid(
@@ -131,12 +139,12 @@
   rows: (title_space, abstract_space, first_block_space, second_block_space, third_block_space, 1fr),
   column-gutter: SPACING,
   row-gutter: SPACING,
-  grid.cell(x:0, y:0, colspan:2, [#poster_title]),
-  grid.cell(x:0, y:1, colspan:2, [#poster_abstract]),
-  grid.cell(x:0, y:2, rowspan:3, [#poster_intro]),
-  grid.cell(x:1, y:2, rowspan:1, [#poster_models]),
-  grid.cell(x:1, y:3, rowspan:1, [#poster_spectra]),
-  grid.cell(x:1, y:4, [#poster_results]),
-  grid.cell(x:0, y:5, [#poster_acknowledgements]),
-  grid.cell(x:1, y:5, [#poster_references])
+  grid.cell(x: 0, y: 0, colspan: 2, [#poster_title]),
+  grid.cell(x: 0, y: 1, colspan: 2, [#poster_abstract]),
+  grid.cell(x: 0, y: 2, rowspan: 3, [#poster_intro]),
+  grid.cell(x: 1, y: 2, rowspan: 1, [#poster_models]),
+  grid.cell(x: 1, y: 3, rowspan: 1, [#poster_spectra]),
+  grid.cell(x: 1, y: 4, [#poster_results]),
+  grid.cell(x: 0, y: 5, [#poster_acknowledgements]),
+  grid.cell(x: 1, y: 5, [#poster_references]),
 )
