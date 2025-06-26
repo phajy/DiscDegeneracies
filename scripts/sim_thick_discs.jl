@@ -272,7 +272,7 @@ for (i, spin_in) in enumerate(spin_values)
     println("Simulating spin ", spin_in)
 
     m = KerrMetric(1.0, spin_in)
-    d = ShakuraSunyaev(m; eddington_ratio=0.3)
+    d = ShakuraSunyaev(m; eddington_ratio=0.2)
     lp_model = LampPostModel(h=4.0)
     profile = emissivity_profile(m, d, lp_model)
 
@@ -283,7 +283,7 @@ for (i, spin_in) in enumerate(spin_values)
     model.a1.a = 1.99
 
     model.a2.K = 9.49e-5
-    model.a2.eddington_ratio = 0.3
+    model.a2.eddington_ratio = 0.2
     model.a2.a = spin_in
     model.a2.θ_obs = 60.0
     model.a2.lineE = 6.4
