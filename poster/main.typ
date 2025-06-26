@@ -1,6 +1,9 @@
 #set page("a0", margin: 2.0cm, fill: orange.lighten(90%))
 #set text(size: 34pt)
 
+// annoyingly the figure numbering doesn't work properly (it goes out of order and I can't figure out how to reset the counter!) so I'll do it by hand.
+#set figure(supplement: none, numbering: none)
+
 #let STROKE_WIDTH = 6pt
 
 #let SPACING = 1.0cm
@@ -46,21 +49,21 @@
 
   X-ray observations of "broad iron lines" are an extremely powerful probe of the spacetime, corona, and accretion environment around black holes.
 
-  A hot corona produces X-rays by inverse-Compton scattering thermal photons from the accretion disc. These X-rays reach the observer directly as well as illuminating the accretion disc. The back-scattered spectrum from the disc contains a strong iron K$alpha$ line that is broadened and skewed by the relativistic effects. The precise geometry of the disc and corona is uncertain.
+  A hot corona produces X-rays by inverse-Compton scattering thermal photons from the accretion disc. These X-rays reach the observer directly as well as illuminating the disc itself. The back-scattered spectrum from the disc contains a strong iron K$alpha$ line that is broadened and skewed by the relativistic effects. The precise geometry of the disc and corona is uncertain.
 
   #figure(
     block(image("figs/disc_and_reflection.jpg", width: 50%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: ["Lamppost" corona illuminating a razor-thin accretion disc.]
+    caption: [Figure 1: "Lamppost" corona illuminating a razor-thin accretion disc.]
   )
 
   #figure(
     block(image("figs/blurred_reflection.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: [The reflection spectrum is relativistically blurred. The specifics of the broadening encode information about the disc, corona, and spacetime.],
+    caption: [Figure 2: The reflection spectrum is relativistically blurred. This broadening encodes information about the disc, corona, and spacetime.],
   )
 
   #figure(
     block(image("figs/powerlaw_fit.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: [Power-law fit to MCG --6-30-15 observations by _XMM-Newton_ and _NuSTAR_. The residuals clearly show the broad iron line and Compton hump.],
+    caption: [Figure 3: Residuals to a power-law fit to MCG --6-30-15 observations by _XMM-Newton_ and _NuSTAR_ showing a broad iron line and Compton hump.],
   )
 ]
 
@@ -72,12 +75,12 @@
 
   #figure(
     block(image("figs/disc_profile_a_0.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: [Disc cross sections for a range of Eddington fractions, $dot(m)$, illuminated by a lamppost corona (indicated by the red star).],
+    caption: [Figure 4: Disc cross sections for a range of Eddington fractions, $dot(m)$, illuminated by a lamppost corona (indicated by the red star).],
   )
 
   #figure(
     block(image("figs/disc_obscuration.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
-    caption: [Razor-thin disc (a) and thick disc (b). Note the obscured innermost radii in (b) -- this will be more significant at high inclination.],
+    caption: [Figure 5: Razor-thin disc (a) and thick disc (b). Note the obscured innermost radii in (b) -- this will be more significant at high inclination.],
   )
 
   #place(top + right, dx: 60pt, dy: -110pt, image("logos/gradus.png", width: 15%))
@@ -87,9 +90,7 @@
 #let poster_spectra = secblock(fill: COLOR_RED)[
   = Simulated Spectra
 
-  As an initial test, we use #smallcaps[SpectralFitting.jl] to simulate high-quality _XMM-Newton_ observations of thin discs, and fit these simulations with thin disc models. We then try simulating thick discs at high inclination angles and fit these with thin disc models. This is an initial proof of concept and we will simulate a range of discs, coronae, and spacetimes in the future.
-
-  // Figure of fit to a simulated spectrum with residuals.
+  As an initial test, we use #smallcaps[SpectralFitting.jl] to simulate high-quality _XMM-Newton_ observations of thin discs, and fit these simulations with thin disc models. We then try simulating thick discs at high inclination angles and fit these with thin disc models. This is an initial proof of concept and we will simulate a broader range of discs, coronae, and spacetimes in the future.
 
   #place(top + right, dx: 80pt, dy: -80pt, image("logos/spectral_fitting.svg", width: 23%))
 ]
@@ -103,11 +104,11 @@
     columns: (1fr, 1fr),
     figure(
       block(image("figs/thin_disc_confidence.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
-      caption: [Thin disc simulation / thin disc fit -- good spin measurements.],
+      caption: [Figure 6: Thin disc simulation / thin disc fit: good spin measurements.],
     ),
     figure(
       block(image("figs/thick_disc_confidence.svg", width: 80%), stroke: 6pt, inset: SPACING, radius: SPACING, fill: white),
-      caption: [Thick disc simulation / thin disc fit -- biased spin measurements.],
+      caption: [Figure 7: Thick disc simulation / thin disc fit: biased spin measurements.],
     )
   )
 
